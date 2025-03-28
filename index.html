@@ -73,25 +73,54 @@
   <!-- 오류 메시지 표시 영역 -->
   <div id="error-message" class="error-message"></div>
 </div>
-
 <!-- Kakao SDK를 body 끝부분에 로드 -->
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js" 
       integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4" 
       crossorigin="anonymous"></script>
-
 <script type="text/javascript">
+  // Kakao 앱 키 (필수!)
+  const KAKAO_APP_KEY = 'b68d497748f94d3ed4e2a34ccf4bd43c'; // 실제 앱 키로 대체 필요
+  
   // 티켓 URL 상수 정의
   const TICKET_URL_27 = 'https://김종태.kr/33/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=159813956&t=board';
   const TICKET_URL_28 = 'http://www.jumin.org/home.htm';
   
-  // 이미지 URL - 명시적으로 500x800 크기 지정
-  const IMAGE_URL = 'https://김종태.kr/upload/S20240128f217624f8c258/d9d95daec3a8b.jpg',
-            link: {
-              mobileWebUrl: TICKET_URL_28,
-              webUrl: TICKET_URL_28
-            }
+  // 이미지 URL
+  const IMAGE_URL = 'https://김종태.kr/upload/S20240128f217624f8c258/d9d95daec3a8b.jpg';
+  
+  // 템플릿 ID (필요한 경우)
+  const TEMPLATE_ID = 118864; // 실제 템플릿 ID로 대체 필요
+  
+  // Kakao SDK 초기화 함수
+  function initKakao() {
+    if (!Kakao.isInitialized()) {
+      Kakao.init(KAKAO_APP_KEY);
+    }
+  }
+  
+  // 오류 메시지 표시 함수
+  function showError(message) {
+    const errorElement = document.getElementById('error-message');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  }
+  
+  // 기본 공유하기 함수
+  function sendDefaultLink() {
+    try {
+      initKakao();
+      
+      Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '윤석열 탄핵! 주민교회 광화문 집회',
+          description: '3월29일 토요일 오후 4시/광화문 정문',
+          imageUrl: IMAGE_URL,
+          link: {
+            mobileWebUrl: TICKET_URL_28,
+            webUrl: TICKET_URL_28
           }
-        ]
+        }
       });
     } catch (e) {
       showError('기본 공유하기 실패: ' + e.message);
@@ -99,9 +128,9 @@
   }
   
   // 템플릿 공유하기 함수
-  async function sendTemplateLink() {
+  function sendTemplateLink() {
     try {
-      await initKakao();
+      initKakao();
       
       Kakao.Share.sendCustom({
         templateId: TEMPLATE_ID,
@@ -117,12 +146,14 @@
       showError('템플릿 공유하기 실패: ' + e.message);
     }
   }
-
+  
   // 페이지 로드 시 Kakao SDK 초기화
   window.addEventListener('load', () => {
-    initKakao().catch(e => {
+    try {
+      initKakao();
+    } catch (e) {
       showError(e.message);
-    });
+    }
   });
 </script>
 </body>
