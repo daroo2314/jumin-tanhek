@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Daroo Webzine By. daroo</title>
+<title>탄핵집회안내 By. Jumin</title>
 <style>
   body {
     font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
@@ -51,7 +51,7 @@
 <body>
 <div class="container">
   <!-- 제목은 한 번만 표시 -->
-  <div class="title">DAROO Webzine By. daroo</div>
+  <div class="title">탄핵집회 By. Jumin</div>
   
   <!-- 썸네일 미리보기 -->
   <img src="https://img1.daumcdn.net/thumb/R300x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfMzCG%2FbtsM0qjcsjy%2FDz2EZ4Xkd5vNKfFPbFPq81%2Fimg.jpg" alt="jumin_tanhek">
@@ -71,97 +71,7 @@
   </div>
   
   <!-- 오류 메시지 표시 영역 -->
-  <div id="error-message" class="error-message"></div>
-</div>
-
-<!-- Kakao SDK를 body 끝부분에 로드 -->
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js" 
-      integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4" 
-      crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-  // 티켓 URL 상수 정의
-  const TICKET_URL_27 = 'https://xn--4k0b511c91f.kr/33/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=159813956&t=board';
-  const TICKET_URL_28 = 'http://www.jumin.org/home.htm';
-  
-  // 이미지 URL - 명시적으로 500x800 크기 지정
-  const IMAGE_URL = 'https://img1.daumcdn.net/thumb/R500x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfMzCG%2FbtsM0qjcsjy%2FDz2EZ4Xkd5vNKfFPbFPq81%2Fimg.jpg';
-  
-  // 템플릿 ID
-  const TEMPLATE_ID = 118864;
-  
-  // 에러 표시 함수
-  function showError(message) {
-    const errorElement = document.getElementById('error-message');
-    if (errorElement) {
-      errorElement.innerText = message;
-      errorElement.style.display = 'block';
-    }
-    console.error('에러:', message);
-  }
-  
-  // Kakao SDK 초기화 함수 - 한 번만 실행되도록 보장
-  let kakaoInitialized = false;
-  
-  function initKakao() {
-    if (kakaoInitialized) return true;
-    
-    try {
-      if (!Kakao) {
-        showError('Kakao SDK가 로드되지 않았습니다.');
-        return false;
-      }
-      
-      // 이미 초기화되었는지 확인
-      if (Kakao.isInitialized()) {
-        kakaoInitialized = true;
-        return true;
-      }
-      
-      // 초기화
-      Kakao.init('5de9940787f0cae615e5c63631ecb006');
-      kakaoInitialized = Kakao.isInitialized();
-      
-      if (!kakaoInitialized) {
-        showError('Kakao SDK 초기화에 실패했습니다.');
-        return false;
-      }
-      
-      return true;
-    } catch (e) {
-      showError('Kakao SDK 초기화 중 오류 발생: ' + e.message);
-      return false;
-    }
-  }
-  
-  // 기본 공유하기 함수
-  function sendDefaultLink() {
-    if (!initKakao()) return;
-    
-    try {
-      Kakao.Share.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: "윤석열 탄핵기원",
-          description: '주민교회 광화문 집회',
-          imageUrl: IMAGE_URL,
-          imageWidth: 500,
-          imageHeight: 800,
-          link: {
-            mobileWebUrl: TICKET_URL_28,
-            webUrl: TICKET_URL_28
-          }
-        },
-        buttons: [
-          {
-            title: '김종태기념사업회',
-            link: {
-              mobileWebUrl: TICKET_URL_27,
-              webUrl: TICKET_URL_27
-            }
-          },
-          {
-            title: '주민교회',
+  <div id="error-message" class="error-message"></d회',
             link: {
               mobileWebUrl: TICKET_URL_28,
               webUrl: TICKET_URL_28
